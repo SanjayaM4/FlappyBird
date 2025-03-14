@@ -7,6 +7,7 @@ public class LogicScript : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public GameObject GameOverScreen;
+    public PipeMoveScript pipeMoveScript;
 
     [ContextMenu("Add Score")]
     public void AddScore()
@@ -17,6 +18,7 @@ public class LogicScript : MonoBehaviour
 
     public void RestartGame()
     {
+        pipeMoveScript.moveSpeed = 10;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
