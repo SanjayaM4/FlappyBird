@@ -1,4 +1,4 @@
-# FlappyBird
+# FlappyBird Game
 
 Flappy Bird inspired project made in Unity using C#
 
