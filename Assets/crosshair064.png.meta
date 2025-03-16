@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 99154517d2faae74496a253ebc646f08
+guid: 32935c5d74931bc48918b299ba0cf7f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1335372164229887253
-    second: shipGreen_manned_0
+      213: -5512871617722481519
+    second: crosshair064_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shipGreen_manned_0
+      name: crosshair064_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 124
-        height: 123
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bea022c771ec77de0800000000000000
-      internalID: -1335372164229887253
+      spriteID: 194815dd8785e73b0800000000000000
+      internalID: -5512871617722481519
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      shipGreen_manned_0: -1335372164229887253
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

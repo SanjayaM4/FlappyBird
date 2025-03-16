@@ -7,13 +7,15 @@ public class PipeSpawnScript : MonoBehaviour
     private float Timer = 0;
     private int max = 0;
     public float heightOffset = 10;
-
+    public GameObject boss;
     public LogicScript logic;
     public PipeMoveScript pipeMoveScript;
+    public bool BossAlive;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        BossAlive = false;
         pipeMoveScript.moveSpeed = 10;
         SpawnPipe();
     }
@@ -21,7 +23,7 @@ public class PipeSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (logic.playerScore % 5 == 0 && logic.playerScore > max)
+        if (logic.playerScore > max)
         {
             max = logic.playerScore;
             spawnRate *= 0.9f;
@@ -33,15 +35,25 @@ public class PipeSpawnScript : MonoBehaviour
             }
         }
 
-        if (Timer < spawnRate)
+        if (BossAlive == false && logic.playerScore == 9)
         {
-            Timer += Time.deltaTime;
+            BossAlive = true;
+            SpawnBoss();
         }
-        else
+
+        if (BossAlive == false)
         {
-            SpawnPipe();
-            Timer = 0;
-        }
+            if (Timer < spawnRate)
+            {
+                Timer += Time.deltaTime;
+            }
+            else
+            {
+                SpawnPipe();
+                Timer = 0;
+            }
+        }    
+        
     }
 
     void SpawnPipe()
@@ -52,5 +64,11 @@ public class PipeSpawnScript : MonoBehaviour
         Instantiate(Pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0),
          Quaternion.identity);
 
+    }
+
+    void SpawnBoss()
+    {
+        Instantiate(boss, new Vector3(transform.position.x, transform.position.y, 0),
+         Quaternion.identity);
     }
 }

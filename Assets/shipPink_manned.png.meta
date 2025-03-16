@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shipPink_manned_0: 6261051784771159599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
