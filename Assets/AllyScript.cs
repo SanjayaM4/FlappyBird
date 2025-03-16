@@ -13,6 +13,7 @@ public class AllyScript : MonoBehaviour
     private GameObject boss;
     private Boss1Script boss1Script;
     private Vector3 bossLocation;
+    public AudioClip audioClip;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,6 +40,8 @@ public class AllyScript : MonoBehaviour
     {
         if (other.gameObject.layer == 3)
         {
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
+
             StartCoroutine(ChangeSprites());
 
             boss1Script.BossHit();

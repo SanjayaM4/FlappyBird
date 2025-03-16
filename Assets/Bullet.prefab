@@ -178,3 +178,4 @@ MonoBehaviour:
   deadZone: -45
   explosionSprite: {fileID: 1298194740603514973, guid: 35a50226ed7dc724fb25c96d12d35536, type: 3}
   moveSpeed: 100
+  audioClip: {fileID: 8300000, guid: a29f2bebccf3ad9469fc9487685efc8e, type: 3}

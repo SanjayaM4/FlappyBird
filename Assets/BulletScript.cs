@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
     public Sprite explosionSprite;
     public float moveSpeed = 10;
     private Rigidbody2D rb;
+    public AudioClip audioClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +31,7 @@ public class BulletScript : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Static;
         spriteRenderer.sprite = explosionSprite;
+        AudioSource.PlayClipAtPoint(audioClip, transform.position);
         Destroy(gameObject, 0.1f);
     }
 }

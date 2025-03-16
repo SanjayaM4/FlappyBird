@@ -109,3 +109,5 @@ MonoBehaviour:
   height: 20
   leftMoveDistance: 15
   startPos: {x: 0, y: 0, z: 0}
+  shootSound: {fileID: 8300000, guid: 511fba81dab9fb74d83a9269b53b7308, type: 3}
+  victorySound: {fileID: 8300000, guid: cd66c109ff5c417488685d8b20f199f8, type: 3}

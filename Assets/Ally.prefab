@@ -141,3 +141,4 @@ MonoBehaviour:
   explosionSprite: {fileID: 7722952795102649044, guid: 87bd6df34597fcd40b52370591835809, type: 3}
   bulletSprite: {fileID: -6333375245597226505, guid: 190b18fc2e651044092339ee99509f37, type: 3}
   moveSpeed: 10
+  audioClip: {fileID: 8300000, guid: 24b380e23ec64a343985558cd46ba5d4, type: 3}

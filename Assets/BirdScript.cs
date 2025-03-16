@@ -6,6 +6,8 @@ public class BirdScript : MonoBehaviour
     public float flapStrength;
     public LogicScript logic;
     public bool isAlive = true;
+    public AudioClip flapAudio;
+    public AudioClip dieAudio;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +21,7 @@ public class BirdScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isAlive)
         {
             MyRigidbody.linearVelocity = Vector2.up * flapStrength;
+            AudioSource.PlayClipAtPoint(flapAudio, transform.position);
         }
     }
 
@@ -27,5 +30,6 @@ public class BirdScript : MonoBehaviour
         isAlive = false;
         gameObject.layer = 0;
         logic.GameOver();
+        AudioSource.PlayClipAtPoint(dieAudio, transform.position);
     }
 }

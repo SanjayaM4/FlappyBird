@@ -3,6 +3,7 @@ using UnityEngine;
 public class MiddleScript : MonoBehaviour
 {
     public LogicScript logic;
+    public AudioClip audioClip;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +22,7 @@ public class MiddleScript : MonoBehaviour
         if (other.gameObject.layer == 3)
         {
             logic.AddScore();
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
         }
     }
 }

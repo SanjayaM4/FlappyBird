@@ -19,6 +19,8 @@ public class Boss1Script : MonoBehaviour
     private int numShots = 0;
     private GameObject pipeSpawner;
     private PipeSpawnScript pipeSpawnScript;
+    public AudioClip shootSound;
+    public AudioClip victorySound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,6 +63,7 @@ public class Boss1Script : MonoBehaviour
             else
             {
                 Shoot();
+                AudioSource.PlayClipAtPoint(shootSound, transform.position);
                 numShots++;
                 Timer = 0;
 
@@ -81,6 +84,7 @@ public class Boss1Script : MonoBehaviour
             isAlive = false;
             pipeSpawnScript.BossAlive = false;
             Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(victorySound, transform.position);
         }
     }
 
