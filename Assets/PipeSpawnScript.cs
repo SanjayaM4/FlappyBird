@@ -26,12 +26,12 @@ public class PipeSpawnScript : MonoBehaviour
         if (logic.playerScore > max)
         {
             max = logic.playerScore;
-            spawnRate *= 0.9f;
-            pipeMoveScript.moveSpeed *= 1.1f;
+            spawnRate *= 0.95f;
+            pipeMoveScript.moveSpeed *= 1.05f;
             PipeMoveScript[] pipeMoveScripts = FindObjectsOfType<PipeMoveScript>();
             foreach (PipeMoveScript pipeMoveScript in pipeMoveScripts)
             {
-                pipeMoveScript.moveSpeed = pipeMoveScript.moveSpeed * 1.1f;
+                pipeMoveScript.moveSpeed = pipeMoveScript.moveSpeed * 1.05f;
             }
         }
 
