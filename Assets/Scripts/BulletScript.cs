@@ -19,7 +19,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        transform.position += transform.up * moveSpeed * Time.deltaTime;
 
         if (transform.position.x < deadZone)
         {

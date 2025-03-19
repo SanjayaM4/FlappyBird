@@ -7,7 +7,9 @@ public class PipeSpawnScript : MonoBehaviour
     private float Timer = 0;
     private int max = 0;
     public float heightOffset = 10;
-    public GameObject boss;
+    public GameObject boss1;
+    public GameObject boss2;
+    public GameObject boss3;
     public LogicScript logic;
     public PipeMoveScript pipeMoveScript;
     public bool BossAlive;
@@ -38,7 +40,17 @@ public class PipeSpawnScript : MonoBehaviour
         if (BossAlive == false && logic.playerScore == 9)
         {
             BossAlive = true;
-            SpawnBoss();
+            SpawnBoss1();
+        }
+        else if (BossAlive == false && logic.playerScore == 19)
+        {
+            BossAlive = true;
+            SpawnBoss2();
+        }
+        else if (BossAlive == false && logic.playerScore == 29)
+        {
+            BossAlive = true;
+            SpawnBoss3();
         }
 
         if (BossAlive == false)
@@ -66,9 +78,21 @@ public class PipeSpawnScript : MonoBehaviour
 
     }
 
-    void SpawnBoss()
+    void SpawnBoss1()
     {
-        Instantiate(boss, new Vector3(transform.position.x, transform.position.y, 0),
+        Instantiate(boss1, new Vector3(transform.position.x, transform.position.y, 0),
+         Quaternion.identity);
+    }
+
+    void SpawnBoss2()
+    {
+        Instantiate(boss2, new Vector3(transform.position.x, transform.position.y, 0),
+         Quaternion.identity);
+    }
+
+    void SpawnBoss3()
+    {
+        Instantiate(boss3, new Vector3(transform.position.x, transform.position.y, 0),
          Quaternion.identity);
     }
 }

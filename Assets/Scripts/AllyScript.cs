@@ -12,6 +12,8 @@ public class AllyScript : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject boss;
     private Boss1Script boss1Script;
+    private Boss2Script boss2Script;
+    private Boss3Script boss3Script;
     private Vector3 bossLocation;
     public AudioClip audioClip;
 
@@ -23,6 +25,8 @@ public class AllyScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boss = GameObject.FindGameObjectWithTag("Boss");
         boss1Script = boss.GetComponent<Boss1Script>();
+        boss2Script = boss.GetComponent<Boss2Script>();
+        boss3Script = boss.GetComponent<Boss3Script>();
     }
 
     // Update is called once per frame
@@ -44,7 +48,19 @@ public class AllyScript : MonoBehaviour
 
             StartCoroutine(ChangeSprites());
 
-            boss1Script.BossHit();
+            if (boss1Script != null)
+            {
+                boss1Script.BossHit();
+            }
+            else if (boss2Script != null)
+            {
+                boss2Script.BossHit();
+            }
+            else if (boss3Script != null)
+            {
+                boss3Script.BossHit();
+            }
+
             Destroy(gameObject, 0.5f);
             
         }

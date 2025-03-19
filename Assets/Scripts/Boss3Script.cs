@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class Boss1Script : MonoBehaviour
+public class Boss3Script : MonoBehaviour
 {
-    public int health = 3;
+     public int health = 3;
     public GameObject bullet;
     public GameObject ally;
-    public float shootRate = 1;
-    private float Timer = 0;
+    public float shootSpreadRate = 0.875f;
+    public float shootStraightRate = 0.875f;
+    private float SpreadTimer = 0;
+    private float StraightTimer = 0;
     public bool isAlive;
     public float moveSpeed = 2f;
     public float height = 10f;
@@ -22,6 +24,10 @@ public class Boss1Script : MonoBehaviour
     public AudioClip shootSound;
     public AudioClip victorySound;
 
+
+     public float spreadAngle = 90f;
+    public int bulletCount = 5;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +35,9 @@ public class Boss1Script : MonoBehaviour
         startPos = new Vector3(25, 0, 0);
         pipeSpawner = GameObject.FindGameObjectWithTag("Spawner");
         pipeSpawnScript = pipeSpawner.GetComponent<PipeSpawnScript>();
+
+        int bulletLayer = LayerMask.NameToLayer("Bullets");
+        Physics2D.IgnoreLayerCollision(bulletLayer, bulletLayer, true);
     }
 
     // Update is called once per frame
@@ -36,7 +45,7 @@ public class Boss1Script : MonoBehaviour
     {
         if (isMovingToPlace)
         {
-            float moveAmount = moveSpeed*5 * Time.deltaTime;
+            float moveAmount = moveSpeed * 5 * Time.deltaTime;
             transform.position += new Vector3(-moveAmount, 0, 0);
 
             movedDistance += moveAmount;
@@ -56,22 +65,33 @@ public class Boss1Script : MonoBehaviour
         
         if (isMovingToPlace == false)
         {
-            if (Timer < shootRate)
+            if (SpreadTimer < shootSpreadRate)
             {
-                Timer += Time.deltaTime;
+                SpreadTimer += Time.deltaTime;
             }
             else
             {
-                Shoot();
+                ShootSpread();
                 AudioSource.PlayClipAtPoint(shootSound, transform.position);
                 numShots++;
-                Timer = 0;
+                SpreadTimer = 0;
 
-                if (numShots >= 5)
+                if (numShots >= 2)
                 {
                     SpawnAlly();
                     numShots = 0;
                 }
+            }
+
+            if (StraightTimer < shootStraightRate)
+            {
+                StraightTimer += Time.deltaTime;
+            }
+            else
+            {
+                ShootStraight();
+                AudioSource.PlayClipAtPoint(shootSound, transform.position);
+                StraightTimer = 0;
             }
         }
     }
@@ -88,7 +108,21 @@ public class Boss1Script : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void ShootSpread()
+    {
+        float angleStep = spreadAngle / (bulletCount - 1);
+        float startAngle = -spreadAngle / 2;
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            float currentAngle = startAngle + (angleStep * i);
+            Quaternion bulletRotation = Quaternion.Euler(0, 0, currentAngle + 90);
+
+            GameObject bulletInstance = Instantiate(bullet, transform.position, bulletRotation);
+        }
+    }
+
+    public void ShootStraight()
     {
         GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 90));
     }
