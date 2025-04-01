@@ -4,7 +4,7 @@ Flappy Bird inspired project made in Unity using C#
 
 Set in space with Bossfights at score intervals.
 
-Playable at: https://obeahman4.itch.io/flap
+Playable at: https://obeahman4.itch.io/space
 
 Gameplay:
 
